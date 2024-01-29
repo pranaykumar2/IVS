@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Identity Management System</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="text/css" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png">
+    <link rel="stylesheet" href="style.css"
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo">
+          <a>Identity Management System</a>
+        </div>
+        <ul class="links">
+          <li><a href="home">Home</a>
+          <li><a href="about">About Us</a>
+          <li><a href="login">Login</a>
+          <li><a href="contact">Donate Us</a>
+        </ul>
+        <a href="#" class="action_btn">Get Started</a>
+        <div class="toggle_btn">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+
+      <div class="dropdown-menu">
+        <li><a href="home">Home</a>
+        <li><a href="about">About Us</a>
+        <li><a href="login">Login</a>
+        <li><a href="contact">Donate Us</a>
+          <li><a href="#" class="action_btn">Get Started</a>
+      </div>
+    </header>
+
+    <!-- Popup Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <!-- Remove the close button as per your requirement -->
+        <!-- <span class="close" onclick="closeModal()">&times;</span> -->
+
+        <!-- Two Columns -->
+        <div class="modal-columns">
+          <!--Picture -->
+          <div class="modal-column modal-picture">
+            <img src="assets/assest2-removebg.png" alt="NFT: AKCB">
+          </div>
+
+          <!--Information -->
+          <div class="modal-column modal-info">
+            <center>
+              <h2 style="font-family:Bricolage; font-size:30pt; color: #2e4cb8; margin-top: 70px;">Welcome to IMS</h2>
+            </center>
+            <p style="font-family: Poppins1; font-size: 14pt; margin-top: 50px;">Step into the future with our cutting-edge Identity Management System powered by blockchain technology. Elevate your security and control while managing your identity. Kindly note that Ethereum fees apply for seamless document uploads, processing, and verification.</p>
+
+            <!-- Buttons Section -->
+            <div style="text-align: center; margin-top: 30px;">
+              <button class="button-1" onclick="continueToPage()">Continue</button>
+              <button class="button-1" onclick="leavePage()">Leave</button>
+            </div>
+            <!-- Add more information -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <main>
+      <section id="hero">
+        <h1>Welome</h1>
+        <p >
+          test here
+        </p>
+      </section>
+    </main>
+
+  </body>
+</html>
