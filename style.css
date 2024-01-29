@@ -34,11 +34,11 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-		font-family: 'Ubuntu';
-  	user-select: none;
-  	-webkit-user-select: none;
-  	-moz-user-select: none;
-  	-ms-user-select: none;
+    font-family: 'UbuntuNormal';
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 body::-webkit-scrollbar{
