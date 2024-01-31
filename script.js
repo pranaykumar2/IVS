@@ -8,7 +8,7 @@ function openModal() {
   setTimeout(() => {
     modal.style.display = "block";
     setTimeout(() => modal.classList.add("show"), 50);
-  }, 2000); // 5000 milliseconds = 5 seconds
+  }, 1000); // 5000 milliseconds = 5 seconds
 }
 
 function closeModal() {
