@@ -24,7 +24,7 @@ function continueToPage() {
 
 // Function to handle 'Leave' button click
 function leavePage() {
-  window.location.href = "pagenotfound.html"; // Redirect to custom 404 page
+  window.location.href = "assets/pagenotfound.html"; // Redirect to custom 404 page
 }
 
 window.onclick = function (event) {
