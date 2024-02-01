@@ -27,6 +27,10 @@
 	src: url('fonts/Ubuntu-Regular.ttf');
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     height: 100vh;
     background-color: #000;
