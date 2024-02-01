@@ -1,3 +1,5 @@
+
+
 @font-face
 {
 	font-family: 'Poppins';
@@ -32,18 +34,19 @@ html {
 }
 
 body {
-    height: 100vh;
-    background-color: #000;
-    background-image: url('assets/workplace-office-with-laptop-coffee-dark-room-night.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-		font-family: 'UbuntuNormal';
-  	user-select: none;
-  	-webkit-user-select: none;
-  	-moz-user-select: none;
-  	-ms-user-select: none;
+  height: 100vh;
+  background-color: #000;
+  background-image: url('assets/workplace-office-with-laptop-coffee-dark-room-night.jpg');
+  background-size: 1550px 900px; /* Fixed height, auto width */
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'UbuntuNormal';
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
+
 
 body::-webkit-scrollbar{
 	display: none;
@@ -192,6 +195,20 @@ section#hero{
 	font-size: 3rem;
 	margin-bottom: 1rem;
 }
+
+
+
+
+/* About Us Section Styles */
+
+#about {
+  background-color: #f4f4f4;
+  padding: 50px 0;
+  width: 100%;
+  position: relative;
+}
+
+
 
 /* RESPONSIVE DESIGN */
 
