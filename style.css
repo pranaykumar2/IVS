@@ -186,8 +186,10 @@ header{
 /* About Us Section Styles */
 
 #about {
+	font-family: Bricolage;
+	font-size: 22px;
 	background-color: white !important;
-    color: orange;
+    color: darkblue;
     display: flex;
     justify-content: center;
 }
@@ -206,7 +208,7 @@ header{
 .photo img {
     width: 250px;
     height: 250px;
-    margin-right: 100px;
+    margin-right: 50px;
     margin-left: 100px;
     border-radius: 10px;
 	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25),
@@ -216,7 +218,7 @@ header{
 .details {
     margin-right: 150px;
 	font-size: 16px;
-	font-family: UbuntuNormal;
+	font-family: Poppins1;
 	color:black;
 }
 
