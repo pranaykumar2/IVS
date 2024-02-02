@@ -2,117 +2,104 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Identity Management System</title>
+  <title>Identity Verification System</title>
   <script src="script.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" type="text/css" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png">
   <link rel="stylesheet" href="style.css">
+  
 </head>
-<body>
-  <header>
-    <div class="navbar">
-      <div class="logo">
-        <a>Identity Verification System</a>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo">
+          <a>Identity Verification System</a>
+        </div>
+        <ul class="links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="login-signup/login.html">Login</a></li>
+          <li><a href="#contact">Donate Us</a></li>
+        </ul>
+        <a href="login-signup/login.html" class="action_btn">Get Started</a>
+        <div class="toggle_btn">
+          <i class="fa-solid fa-bars"></i>
+        </div>
       </div>
-      <ul class="links">
+
+      <div class="dropdown-menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="login-signup/login.html">Login</a></li>
         <li><a href="#contact">Donate Us</a></li>
-      </ul>
-      <a href="login-signup/login.html" class="action_btn">Get Started</a>
-      <div class="toggle_btn">
-        <i class="fa-solid fa-bars"></i>
+        <li><a href="login-signup/login.html" class="action_btn">Get Started</a></li>
       </div>
+    </header>
+
+    <div>
+        <h1><center style="padding-top: 225px;">Welcome</center></h1>
     </div>
 
-    <div class="dropdown-menu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="login-signup/login.html">Login</a></li>
-      <li><a href="#contact">Donate Us</a></li>
-      <li><a href="login-signup/login.html" class="action_btn">Get Started</a></li>
-    </div>
-  </header>
-
-  <div>
-    <section id="hero">
-      <h1 style="margin-top: 25px;">Welcome</h1>
-      <p>
-        <!-- Add extra content -->
-      </p>
-    </section>
-      <div id="about" style="color: black; margin-top: 250px; display: flex; justify-content: center; position: absolute;">
-        <div style="text-align: center;">
-            <h2 style="margin-bottom: 50px;"> About Us </h2>
-            <div class="about-student" style="display: flex; align-items: center; padding: 10px;">
-                <div class="photo">
-                    <img src="assets/stud1.png" style="width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-left: 100px; border-radius: 10px; shadow: black;" />
-                </div>
-                <div class="details" style="margin-right: 200px;">
-                    Ch. Kalyan Chowdhary <br  /> 211FA19066
-                </div>
-                <br />
-                <div class="photo">
-                    <img src="assets/stud2.png" style="width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-left: 5px;  border-radius: 10px; shadow: black;" />
-                </div>
-                <div class="details" style="margin-right: 200px;">
-                    S. Veera Babu <br /> 221LA19001
-                </div>
-            </div>
-
-            <br />
-
-            <div class="about-student" style="display: flex; align-items: center; padding: 10px;">
-                <div class="photo">
-                    <img src="assets/stud3.png" style="width: 250px; height: 250px; object-fit: cover; margin-right: 140px;  margin-left: 100px; border-radius: 10px; shadow: black;" />
-                </div>
-                <div class="details" style="margin-right: 150px;">
-                    P. Rahul Sai Pavan <br /> 211FA19068
-                </div>
-                <br />
-                <div class="photo">
-                    <img src="assets/stud4.png" style="width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-left: 50px; border-radius: 10px; shadow: black;" />
-                </div>
-                <div class="details" style="margin-right: 200px;">
-                    Y.V. Pranay Kumar <br /> 211FA19002
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-
-
-
-
-  <!-- Popup Modal -->
-
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <!-- Two Columns -->
-      <div class="modal-columns">
-        <!--Picture -->
-        <div class="modal-column modal-picture">
-          <img src="assets/assest2-removebg.png" alt="NFT: AKCB">
-        </div>
-
-        <!--Information -->
-        <div class="modal-column modal-info">
-          <center>
-            <h2 style="font-family:Bricolage; font-size:30pt; color: #2e4cb8; margin-top: 70px;">Welcome to IVS</h2>
-          </center>
-          <p style="font-family: Poppins1; font-size: 14pt; margin-top: 50px;">Step into the future with our cutting-edge Identity Verification System powered by blockchain technology. Elevate your security and control while managing your identity. Kindly note that Ethereum fees apply for seamless document uploads, processing, and verification.</p>
-          <!-- Buttons Section -->
-          <div style="text-align: center; margin-top: 30px;">
-            <button class="button-1" onclick="continueToPage()">Continue</button>
-            <button class="button-1" onclick="leavePage()">Leave</button>
+    <div id="about">
+      <div class="container">
+          <h2 style=" margin-top: 50px; margin-bottom: 50px;">About Us</h2>
+          <div class="about-student">
+              <div class="photo">
+                  <img src="assets/stud1.png" alt="Student Image" />
+              </div>
+              <div class="details">
+                  Ch. Kalyan Chowdhary <br /> 211FA19066
+              </div>
+              <div class="photo">
+                  <img src="assets/stud2.png" alt="Student Image" />
+              </div>
+              <div class="details">
+                  S. Veera Babu <br /> 221LA19001
+              </div>
           </div>
-          <!-- Add more information -->
+          <div class="about-student">
+              <div class="photo">
+                  <img src="assets/stud3.png" alt="Student Image" />
+              </div>
+              <div class="details">
+                  P. Rahul Sai Pavan <br /> 211FA19068
+              </div>
+              <div class="photo" style="margin-left: 35px;">
+                  <img src="assets/stud4.avif" alt="Student Image" />
+              </div>
+              <div class="details">
+                  Y.V. Pranay Kumar <br /> 211FA19002
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <!-- Two Columns -->
+        <div class="modal-columns">
+          <!--Picture -->
+          <div class="modal-column modal-picture">
+            <img src="assets/assest2-removebg.png" alt="NFT: AKCB">
+          </div>
+
+          <!--Information -->
+          <div class="modal-column modal-info">
+            <center>
+              <h2 style="font-family:Bricolage; font-size:30pt; color: #2e4cb8; margin-top: 70px;">Welcome to IVS</h2>
+            </center>
+            <p style="font-family: Poppins1; font-size: 14pt; margin-top: 50px;">Step into the future with our cutting-edge Identity Verification System powered by blockchain technology. Elevate your security and control while managing your identity. Kindly note that Ethereum fees apply for seamless document uploads, processing, and verification.</p>
+            <!-- Buttons Section -->
+            <div style="text-align: center; margin-top: 30px;">
+              <button class="button-1" onclick="continueToPage()">Continue</button>
+              <button class="button-1" onclick="leavePage()">Leave</button>
+            </div>
+            <!-- Add more information -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-</body>
+  </body>
 </html>
