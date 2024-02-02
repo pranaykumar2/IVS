@@ -27,6 +27,11 @@
 	src: url('fonts/Ubuntu-Regular.ttf');
 }
 
+#home, #about, #contact {
+	margin-bottom: 20px;
+  }
+  
+
 html {
   scroll-behavior: smooth;
 }
@@ -127,7 +132,7 @@ header{
 
 /* POPUP BUTTON */
 
-.button-1 {
+.button-res {
     display: inline-block;
     outline: none;
     cursor: pointer;
@@ -144,7 +149,7 @@ header{
 		margin-top: 30px;
 }
 
-.button-1:hover {
+.button-res:hover {
 			transition: all .1s ease;
 			box-shadow: 0 0 0 0 #fff, 0 0 0 3px #F5F5F5;
 			background: orange !important;
@@ -236,6 +241,129 @@ header{
         margin-right: 0;
     }
 }
+
+/* Contact Us Section Styles */
+.contact-us {
+	background-color: white;
+	padding: 50px 0;
+	text-align: center;
+	margin-bottom: 0;
+	  
+  }
+  
+  .contact-us h1 {
+	font-family: 'Bricolage';
+	font-size: 22px;
+	color: #2e4cb8;
+  }
+
+ 
+  
+  /* Contact Container Styles */
+  .contact-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	max-width: 1200px;
+	margin: auto;
+  }
+  
+  /* Left Half - Form Styles */
+.contact-left {
+	flex: 1;
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+	text-align: left;
+	max-width: 100%; /* Allow the form to spread to the screen */
+	margin-right: 20px; /* Add a margin between left and right halves */
+  }
+  
+  .label-group, .input-group {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start; /* Adjusted to align items at the top */
+	margin-bottom: 20px;
+	max-width: 100%;
+  }
+  
+  
+  .label-group label {
+	font-family: 'Poppins1';
+	font-size: 16px;
+	color: #2e4cb8; /* Violet color */
+	flex-basis: calc(50% - 10px); /* Adjusted to prevent overlap */
+  }
+  
+  .input-group input,
+  .input-group textarea {
+	flex: 1;
+	padding: 10px;
+	border: none;
+	border-bottom: 1px solid #ccc; /* Underline */
+	background-color: transparent; /* Transparent background */
+	color: #2e4cb8; /* Violet color */
+	font-family: 'Poppins1';
+	transition: border-color 0.3s ease;
+  }
+  
+  .input-group textarea {
+	border-bottom: none; /* Remove the underline for the textarea */
+	border: 1px solid #ccc; /* Add a border to the textarea */
+	padding: 10px;
+  }
+  
+  .input-group input:focus,
+  .input-group textarea:focus {
+	outline: none;
+	border-color: #2e4cb8; /* Violet color on focus */
+  }
+  
+  textarea {
+	resize: none;
+  }
+  
+  .button-1 {
+	width: 35%;
+	margin-top: 20px;
+	background-color: #2e4cb8;
+	color: white;
+	padding: 12px 24px;
+	border: 0;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 16px;
+	font-family: 'UbuntuNormal';
+	transition: background-color 0.3s ease;
+  }
+  
+  .button-1:hover {
+	background-color: orange;
+  }
+  
+  /* Right Half - Organization Details Styles */
+  .contact-right {
+	flex: 1;
+	background-color: #2e4cb8; /* Violet color */
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  .details {
+	text-align: left; /* Align all details to the left */
+  }
+  
+  .details p {
+	margin-bottom: 15px;
+	font-family: 'Poppins1';
+	font-size: 16px;
+	color: white; /* Font color is set to white */
+  }
+  
+  
 
 /* RESPONSIVE DESIGN */
 
