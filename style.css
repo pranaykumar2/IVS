@@ -459,3 +459,26 @@ img{
 .modal.show .modal-content {
   transform: scale(1);
 }
+
+/* Responsive for modal */
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 100%;
+    max-width: 80%;
+    margin: 10% auto;
+  }
+
+  .modal-columns {
+    flex-direction: column;
+  }
+
+  .modal-column {
+    padding: 15px;
+  }
+
+  .button-res {
+    margin-top: 15px;
+  }
+}
+
