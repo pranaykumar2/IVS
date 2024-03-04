@@ -16,8 +16,8 @@
                   <h1 style="margin-bottom: 25px;">Create Account</h1>
                   <span>Thanks for having us!!</span>
                   <input type="text" placeholder="Name">
-                  <input type="email" placeholder="Email">
-                  <input type="password" placeholder="Password">
+                  <input type="email" placeholder="Email" id="email">
+                  <input type="password" placeholder="Password" id="password">
                   <button>Sign Up</button>
               </form>
           </div>
@@ -48,5 +48,45 @@
       </div>
 
       <script src="login-script.js"></script>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCBa72rzI3v7c3LY7oPhO5eCnO1HVSlxOk",
+      authDomain: "idp-blockchain.firebaseapp.com",
+      projectId: "idp-blockchain",
+      storageBucket: "idp-blockchain.appspot.com",
+      messagingSenderId: "235047637609",
+      appId: "1:235047637609:web:ddb7dabdd855a7a1c488f8",
+    };
+
+    var submit = document.getElementById("submitData");
+
+    const app = initializeApp(firebaseConfig);
+
+    const database = getDatabase(app);
+
+    const auth = getAuth();
+
+    submit.addEventListener("click", () => {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("User created successfully");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    });
+  </script>
   </body>
 </html>
