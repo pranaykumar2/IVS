@@ -25,10 +25,10 @@
               <form>
                   <h1 style="margin-bottom: 25px;">Sign In</h1>
                   <span>Hey there!! Welcome back</span>
-                  <input type="email" placeholder="Email">
-                  <input type="password" placeholder="Password">
+                  <input id = "get-email" type="email" placeholder="Email">
+                  <input id="get-pass" type="password" placeholder="Password">
                   <a href="#">Forget Your Password?</a>
-                  <button>Sign In</button>
+                  <button id="retrieveData">Sign In</button>
               </form>
           </div>
           <div class="toggle-container">
@@ -87,6 +87,22 @@
           alert(errorMessage);
         });
     });
+
+      retrieveData.addEventListener("click", ()=> {
+        var email = document.getElementById("get-email").value;
+        var password = document.getElementById("get-pass").value;
+          signInWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log("user found");
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+              });
+      });
   </script>
   </body>
 </html>
