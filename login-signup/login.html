@@ -2,44 +2,83 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVS | Login</title>
     <link rel="stylesheet" href="login-style.css" />
-    <title></title>
+    <link rel="icon" type="text/css" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png">
   </head>
   <body>
     <main>
-        <section class="form-section">
-          <div class="form-wrapper">
-            <h1 class="title">Login</h1>
-            <form class="form" action="" id="login-form">
-              <div class="form-group">
-                <label>
-                  <span class="sr-only">Email address</span>
-                  <input type="email" placeholder="Email" class="form-input" required>
-                </label>
-              </div>
-              <div class="form-group">
-                <label>
-                  <span class="sr-only">Password</span>
-                  <input type="password" placeholder="Password" class="form-input" required="required" id="user-pass">
-                </label>
-              </div>
+      <section class="form-section">
+        <div class="form-wrapper">
+          <h1 class="title">Login</h1>
+          <div class="form" action="" id="login-form">
+            <div class="form-group">
+              <label>
+                <span class="sr-only">Email address</span>
+                <input type="email" placeholder="Email" class="form-input" required id="email">
+              </label>
+            </div>
+            <div class="form-group">
+              <label>
+                <span class="sr-only">Password</span>
+                <input type="password" placeholder="Password" class="form-input" required="required" id="pass">
+              </label>
+            </div>
 
-              <div class="form-group">
-                <input type="submit" value="Submit" class="form-submit">
-              </div>
+            <div class="form-group">
+              <input type="submit" value="Submit" class="form-submit" id="login">
+            </div>
 
-              <footer class="form-footer">
-                  <div>
-                    <a href="#" class="form-link">Forgot password?</a>
-                  </div>
-                  <div>
-                    New here?
-                    <a href="signup.html" class="form-link">Create Account</a>
-                  </div>
-              </footer>
-            </form>
+            <footer class="form-footer">
+                <div>
+                  <a href="#" class="form-link">Forgot password?</a>
+                </div>
+                <div>
+                  New here?
+                  <a href="signup.html" class="form-link">Create Account</a>
+                </div>
+            </footer>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyC3cqpweL5x7D8XNhtXXgK6meZ9fq23QOk",
+        authDomain: "userdetails-5814f.firebaseapp.com",
+        databaseURL: "https://userdetails-5814f-default-rtdb.firebaseio.com",
+        projectId: "userdetails-5814f",
+        storageBucket: "userdetails-5814f.appspot.com",
+        messagingSenderId: "909595503569",
+        appId: "1:909595503569:web:f777249a1f353fb9bc8ef0",
+        measurementId: "G-HE14EDLZTR"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const auth = getAuth();
+
+      login.addEventListener('click', (e) => {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('pass').value;
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log("User Found");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+          });
+      });
+
+    </script>
   </body>
 </html>
