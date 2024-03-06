@@ -1,3 +1,32 @@
+@font-face
+{
+	font-family: 'Poppins';
+	src: url('../fonts/Poppins/Poppins-ExtraLight.otf');
+}
+@font-face
+{
+	font-family: 'Poppins1';
+	src: url('../fonts/Poppins/Poppins-Regular.otf');
+}
+
+@font-face
+{
+	font-family: 'Montserrat';
+	src: url('../fonts/Montserrat.ttf');
+}
+
+@font-face
+{
+	font-family: 'Bricolage';
+	src: url('../fonts/Bricolage/BricolageGrotesque.ttf');
+}
+
+@font-face
+{
+	font-family: 'UbuntuNormal';
+	src: url('../fonts/Ubuntu-Regular.ttf');
+}
+
 :root {
   --font-base: "Lato";
   --fs-700: 2.986rem;
@@ -253,4 +282,61 @@ input:not([type="submit"]):user-invalid {
   border: 0;
   white-space: nowrap;
   visibility: hidden;
+}
+
+/* Popup Container */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  width: 90%;
+  text-align: center;
+  z-index: 9999;
+}
+
+/* Popup Image */
+.popup img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+/* Popup Text */
+.popup p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 0;
+}
+
+/* Animation Effect */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Animation for Popup */
+.popup.show {
+  display: block;
+  animation: fadeIn 0.5s ease forwards, slideIn 0.5s ease forwards;
 }
