@@ -48,61 +48,48 @@
       </div>
 
       <script src="login-script.js"></script>
-    <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-    import {
-      getAuth,
-      createUserWithEmailAndPassword,
-    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+      <script type="module">
+          // Import the functions you need from the SDKs you need
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+          import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+          import { getDatabases } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+          import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.j";
+          // TODO: Add SDKs for Firebase products that you want to use
+          // https://firebase.google.com/docs/web/setup#available-libraries
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCBa72rzI3v7c3LY7oPhO5eCnO1HVSlxOk",
-      authDomain: "idp-blockchain.firebaseapp.com",
-      projectId: "idp-blockchain",
-      storageBucket: "idp-blockchain.appspot.com",
-      messagingSenderId: "235047637609",
-      appId: "1:235047637609:web:ddb7dabdd855a7a1c488f8",
-    };
+          // Your web app's Firebase configuration
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          const firebaseConfig = {
+            apiKey: "AIzaSyBI6LIY85E7h06TtheQmtFL9h3wk28K184",
+            authDomain: "vignanidp-1.firebaseapp.com",
+            databaseURL: "https://vignanidp-1-default-rtdb.firebaseio.com",
+            projectId: "vignanidp-1",
+            storageBucket: "vignanidp-1.appspot.com",
+            messagingSenderId: "623114741374",
+            appId: "1:623114741374:web:69af63b05663ca58aa5a2f",
+            measurementId: "G-RYKD8J221G"
+          };
 
-    var submit = document.getElementById("submitData");
+          // Initialize Firebase
+          const app = initializeApp(firebaseConfig);
+          const analytics = getAnalytics(app);
+          const database = getDatabase(app);
+          const auth = getAuth();
 
-    const app = initializeApp(firebaseConfig);
+          submitData.addEventListener("click", () => {
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed up
+              const user = userCredential.user;
+              alert("Yay!! you are in")
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert("Oh!! shit")
+            });
+          })
 
-    const database = getDatabase(app);
-
-    const auth = getAuth();
-
-    submit.addEventListener("click", () => {
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          alert("User created successfully");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(errorMessage);
-        });
-    });
-
-      retrieveData.addEventListener("click", ()=> {
-        var email = document.getElementById("get-email").value;
-        var password = document.getElementById("get-pass").value;
-          signInWithEmailAndPassword(auth, email, password)
-              .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log("user found");
-                // ...
-              })
-              .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-              });
-      });
-  </script>
+    </script>
   </body>
 </html>
