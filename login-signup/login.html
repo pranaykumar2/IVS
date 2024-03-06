@@ -2,91 +2,44 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMS | Login</title>
     <link rel="stylesheet" href="login-style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="icon" type="text/css" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png">
-
+    <title></title>
   </head>
   <body>
-      <div class="container" id="container">
-          <div class="form-container sign-up">
-              <form action="" method="">
-                  <h1 style="margin-bottom: 25px;">Create Account</h1>
-                  <span>Thanks for having us!!</span>
-                  <input type="text" placeholder="Name">
-                  <input type="email" placeholder="Email" id="email">
-                  <input type="password" placeholder="Password" id="password">
-                  <button id="submitData">Sign Up</button>
-              </form>
-          </div>
-          <div class="form-container sign-in">
-              <form>
-                  <h1 style="margin-bottom: 25px;">Sign In</h1>
-                  <span>Hey there!! Welcome back</span>
-                  <input id = "get-email" type="email" placeholder="Email">
-                  <input id="get-pass" type="password" placeholder="Password">
-                  <a href="#">Forget Your Password?</a>
-                  <button id="retrieveData">Sign In</button>
-              </form>
-          </div>
-          <div class="toggle-container">
-              <div class="toggle">
-                  <div class="toggle-panel toggle-left">
-                      <h1>Already a User?</h1>
-                      <p>Enter your personal details to use all of site features</p>
-                      <button class="hidden" id="login">Sign In</button>
-                  </div>
-                  <div class="toggle-panel toggle-right">
-                      <h1>Hello, Friend!</h1>
-                      <p>Register with your personal details to use all of site features</p>
-                      <button class="hidden" id="register">Sign Up</button>
-                  </div>
+    <main>
+        <section class="form-section">
+          <div class="form-wrapper">
+            <h1 class="title">Login In</h1>
+            <form class="form" action="" id="login-form">
+              <div class="form-group">
+                <label>
+                  <span class="sr-only">Email address</span>
+                  <input type="email" placeholder="Email" class="form-input" required>
+                </label>
               </div>
+              <div class="form-group">
+                <label>
+                  <span class="sr-only">Password</span>
+                  <input type="password" placeholder="Password" class="form-input" required="required" id="user-pass">
+                </label>
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="Submit" class="form-submit">
+              </div>
+
+              <footer class="form-footer">
+                  <div>
+                    <a href="#" class="form-link">Forgot password?</a>
+                  </div>
+                  <div>
+                    New here?
+                    <a href="signup.html" class="form-link">Create Account</a>
+                  </div>
+              </footer>
+            </form>
           </div>
-      </div>
-
-      <script src="login-script.js"></script>
-    <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCBa72rzI3v7c3LY7oPhO5eCnO1HVSlxOk",
-      authDomain: "idp-blockchain.firebaseapp.com",
-      projectId: "idp-blockchain",
-      storageBucket: "idp-blockchain.appspot.com",
-      messagingSenderId: "235047637609",
-      appId: "1:235047637609:web:ddb7dabdd855a7a1c488f8",
-    };
-
-    var submit = document.getElementById("submitData");
-
-    const app = initializeApp(firebaseConfig);
-    console.log(app);
-
-    const database = getDatabase(app);
-    console.log(database);
-
-    const auth = getAuth();
-
-    submit.addEventListener("click", () => {
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("User created successfully");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage);
-        });
-    });
-  </script>
+        </section>
+      </main>
   </body>
 </html>
