@@ -7,7 +7,7 @@
     <link rel="icon" type="text/css" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png">
     <title>IVS | Signup</title>
   </head>
-  <body>
+  <body style="font-family: Montserrat;">
     <main>
         <section class="form-section">
           <div class="form-wrapper">
@@ -49,6 +49,12 @@
         </section>
       </main>
 
+      <!-- Popup Container -->
+      <div id="popup-container" class="popup">
+        <img src="../assets/welcome.png" alt="Congrats Image">
+        <p>Congrats!! You are in</p>
+      </div>
+
       <script type="module">
           import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
           import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
@@ -68,31 +74,34 @@
           const database = getDatabase(app);
           const auth = getAuth();
 
-          signup.addEventListener('click',(e) => {
-
+          signup.addEventListener('click', (e) => {
             var email = document.getElementById('user-email').value;
             var password = document.getElementById('user-pass').value;
             var checkPass = document.getElementById("check-user-pass").value;
 
-            if(password !== checkPass) {
+            if (password !== checkPass) {
               event.preventDefault();
               alert("Passwords do not match.");
-            }
-
-            else {
+            } else {
               createUserWithEmailAndPassword(auth, email, password)
-              .then((userCredential) => {
-                // Signed up
-                const user = userCredential.user;
-                console.log("user added");
-              })
-              .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
-              });
+                .then((userCredential) => {
+                  // Signed up
+                  const user = userCredential.user;
+                  console.log("user added");
+                  document.getElementById("popup-container").classList.add("show");
+
+                  setTimeout(() => {
+                    document.getElementById("popup-container").classList.remove("show");
+                  }, 3000); 
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.log(errorMessage);
+                });
             }
           });
+
       </script>
   </body>
 </html>
