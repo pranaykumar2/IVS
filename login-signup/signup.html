@@ -74,6 +74,11 @@
           const database = getDatabase(app);
           const auth = getAuth();
 
+          function resetForm() {
+            document.getElementById('email').value = '';
+            document.getElementById('pass').value = '';
+          }
+
           signup.addEventListener('click', (e) => {
             var email = document.getElementById('user-email').value;
             var password = document.getElementById('user-pass').value;
@@ -92,7 +97,8 @@
 
                   setTimeout(() => {
                     document.getElementById("popup-container").classList.remove("show");
-                  }, 3000); 
+                    resetForm();
+                  }, 3000);
                 })
                 .catch((error) => {
                   const errorCode = error.code;
