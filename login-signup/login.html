@@ -77,6 +77,8 @@
           const auth = getAuth();
 
           submitData.addEventListener("click", () => {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
             createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
               // Signed up
