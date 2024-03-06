@@ -79,12 +79,12 @@
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          alert("User created successfully");
+          console.log("User created successfully");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          alert(errorMessage);
+          console.log(errorMessage);
         });
     });
 
