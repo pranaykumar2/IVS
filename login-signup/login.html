@@ -51,10 +51,8 @@
     <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
     import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-    import {
-      getAuth,
-      createUserWithEmailAndPassword,
-    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
 
     const firebaseConfig = {
       apiKey: "AIzaSyCBa72rzI3v7c3LY7oPhO5eCnO1HVSlxOk",
@@ -89,22 +87,6 @@
           console.log(errorMessage);
         });
     });
-
-      retrieveData.addEventListener("click", ()=> {
-        var email = document.getElementById("get-email").value;
-        var password = document.getElementById("get-pass").value;
-          signInWithEmailAndPassword(auth, email, password)
-              .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log("user found");
-                // ...
-              })
-              .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-              });
-      });
   </script>
   </body>
 </html>
