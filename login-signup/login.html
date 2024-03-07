@@ -49,6 +49,11 @@
       <p>Happy to see you again!!</p>
     </div>
 
+    <div id="user-not-found" class="popup">
+      <img src="../assets/notfound.png" alt="Congrats Image">
+      <p>Invalid Login!!</p>
+    </div>
+
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
       import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
@@ -93,6 +98,12 @@
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage);
+            document.getElementById("user-not-found").classList.add("show");
+
+            setTimeout(() => {
+              document.getElementById("user-not-found").classList.remove("show");
+              resetForm();
+            }, 3000);
           });
       });
     </script>
