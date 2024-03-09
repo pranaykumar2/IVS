@@ -231,7 +231,7 @@ input:not([type="submit"]):user-invalid {
 }
 
 .form-submit:hover {
-  background-color: var(--primary-50);
+  background-color: orange !important;
 }
 
 .form-footer {
