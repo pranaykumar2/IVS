@@ -56,12 +56,13 @@
 
     <div id="email-sent" class="popup">
       <img src="../assets/sent.png" alt="Congrats Image">
-      <p>Invalid Login!!</p>
+      <p>Email Sent!!</p>
     </div>
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
       import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+      import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
       import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
       const firebaseConfig = {
         apiKey: "AIzaSyC3cqpweL5x7D8XNhtXXgK6meZ9fq23QOk",
@@ -77,6 +78,7 @@
       const app = initializeApp(firebaseConfig);
       const database = getDatabase(app);
       const auth = getAuth();
+      const db = getFirestore(app);
 
       function resetForm() {
         document.getElementById('email').value = '';
@@ -112,27 +114,34 @@
           });
       });
       const reset_pass = document.getElementById("reset-pass");
-      reset_pass.addEventListener("click", (event) => {
-        const email = document.getElementById("email").value;
+      reset_pass.addEventListener("click", async (event) => {
         event.preventDefault();
-        sendPasswordResetEmail(auth, email)
-          .then(() => {
-
-            document.getElementById("email-sent").classList.add("show");
-
-            setTimeout(() => {
-              document.getElementById("email-sent").classList.remove("show");
-              resetForm();
-            }, 3000);
-
-            console.log("Email sent..");
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorMessage);
-          });
-      });
+        const email = document.getElementById("email").value;
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("email", "==", email));
+        const querySnapshot = await getDocs(q);
+        
+        if (!querySnapshot.empty) {
+          sendPasswordResetEmail(auth, email)
+            .then(() => {
+              document.getElementById("email-sent").classList.add("show");
+              setTimeout(() => {
+                document.getElementById("email-sent").classList.remove("show");
+                resetForm();
+              }, 3000);
+              console.log("Email sent.");
+            })
+            .catch((error) => {
+              console.error(error.message);
+            });
+        } 
+        else {
+          document.getElementById("user-not-found").classList.add("show");
+          setTimeout(() => {
+            document.getElementById("user-not-found").classList.remove("show");
+          }, 3000);
+        }
+    });
     </script>
   </body>
 </html>
