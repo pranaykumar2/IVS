@@ -32,7 +32,7 @@
 
             <footer class="form-footer">
                 <div>
-                  <a href="#" class="form-link">Forgot password?</a>
+                  <a href="#" class="form-link" id="reset-pass">Forgot password?</a>
                 </div>
                 <div>
                   New here?
@@ -45,12 +45,17 @@
     </main>
     <!-- Popup Container -->
     <div id="popup-container" class="popup">
-      <img src="../assets/hello.png" alt="Congrats Image">
+      <img src="../assets/hello.png" alt="Welcome back Image">
       <p>Happy to see you again!!</p>
     </div>
 
     <div id="user-not-found" class="popup">
-      <img src="../assets/notfound.png" alt="Congrats Image">
+      <img src="../assets/notfound.png" alt="Invalid User">
+      <p>Invalid Login!!</p>
+    </div>
+
+    <div id="email-sent" class="popup">
+      <img src="../assets/sent.png" alt="Congrats Image">
       <p>Invalid Login!!</p>
     </div>
 
@@ -104,6 +109,28 @@
               document.getElementById("user-not-found").classList.remove("show");
               resetForm();
             }, 3000);
+          });
+      });
+      const reset_pass = document.getElementById("reset-pass");
+      reset_pass.addEventListener("click", (event) => {
+        const email = document.getElementById("email").value;
+        event.preventDefault();
+        sendPasswordResetEmail(auth, email)
+          .then(() => {
+
+            document.getElementById("email-sent").classList.add("show");
+
+            setTimeout(() => {
+              document.getElementById("email-sent").classList.remove("show");
+              resetForm();
+            }, 3000);
+
+            console.log("Email sent..");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
           });
       });
     </script>
