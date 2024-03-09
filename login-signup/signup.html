@@ -72,8 +72,9 @@
           const auth = getAuth();
 
           function resetForm() {
-            document.getElementById('email').value = '';
-            document.getElementById('pass').value = '';
+            document.getElementById('user-email').value = '';
+            document.getElementById('user-pass').value = '';
+            document.getElementById('check-user-pass').value = '';
           }
 
           signup.addEventListener('click', (e) => {
