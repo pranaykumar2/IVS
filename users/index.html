@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link  rel="icon" type="image/png" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png" />
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Cantarell:400,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>IVS | User Verification</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="logo">
+          <a href="#">Identity Verification System</a>
+        </div>
+        <div class="nav">
+          <a href="#">Upload</a>
+          <a href="#">Check Status</a>
+          <button type="button" class="button1">Connect</button>
+          <button type="button" class="button2">Logout</button>
+        </div>
+      </div>
+    </div>
+    <div class="glass-panel account-details" style="display: none">
+      <span>
+        <h4 style="color: #dd0c63">
+          Account address:
+        </h4>
+        <span id="account-address"></span>
+      </span>
+      <!--<span><h4 style="color: black">Network:</h4> <span id="network"></span></span>-->
+      <span
+        ><h4 style="color: #dd0c63">Connected on:</h4>
+        <span id="connection-time"></span
+      ></span>
+      <!--<span><h4 style="color: black">Balance:</h4> <span id="userBalance"></span></span>-->
+    </div>
+
+    <br />
+
+    <div>
+      <div class="wrapper">
+        <header><h3>ID Verification Request Form</h3></header>
+        <p class="rf_notice">Your information will be kept private</p>
+
+        <form action="#" class="form">
+          <input class="file-input" type="file" name="file" hidden />
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Browse File to Upload</p>
+        </form>
+        <form id="userForm">
+          <div class="FlowupLabels">
+            <div class="fl_wrap">
+              <label class="fl_label" for="rf_name">Name</label>
+              <input class="fl_input" type="text" id="rf_name" style="color: white; font-family: Montserrat; outline: none; font-size: 15px;" />
+            </div>
+            <div class="fl_wrap">
+              <label class="fl_label" for="rf_email">Email</label>
+              <input class="fl_input" type="email" id="rf_email" style="color: white; font-family: Montserrat; outline: none;  font-size: 15px;"/>
+            </div>
+          </div>
+        </form>
+        <section class="progress-area"></section>
+        <section class="uploaded-area"></section>
+        <button class="submit-upload" id="upload-button">Upload</button>
+        <div id="formHeader"></div>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

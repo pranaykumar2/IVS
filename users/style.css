@@ -1,0 +1,397 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-ExtraLight.otf');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat.ttf');
+}
+
+@font-face {
+    font-family: 'Bricolage';
+    src: url('../fonts/Bricolage/BricolageGrotesque.ttf');
+}
+
+@font-face {
+    font-family: 'UbuntuNormal';
+    src: url('../fonts/Ubuntu-Regular.ttf');
+}
+
+body {
+    background-color: #000;
+    background-image: url('../assets/background.jpg');
+    background-size: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: Poppins/*'Montserrat', sans-serif*/;
+    cursor: url('../assets/cursor.png'), auto;
+}
+
+body::-webkit-scrollbar{
+	display: none;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 70px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left : -37px;
+    cursor: pointer;
+    font-family: 'Poppins';
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 550;
+    cursor: pointer;
+    font-family: 'Poppins';
+}
+
+.nav a:not(:last-child) {
+    margin-right: 20px;
+}
+
+.button1,
+.button2 {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    height: 40px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-right: 25px;
+}
+
+.button2 {
+    background-color: red;
+}
+
+.button1:hover {
+    background-color: orange;
+    color: black;
+}
+
+.glass-panel {
+    color: #fff;
+    margin: 40px auto;
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 80%;
+    max-width: 600px;
+    border-radius: 15px;
+    padding: 32px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+}
+
+.account-details span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.account-details span:first-child {
+    margin-top: 10px;
+}
+
+::selection{
+  color:  white;
+  background: #b4d273;
+}
+.wrapper{
+  margin-left: 475px;
+  width: 550px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 30px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+.wrapper header{
+  color: #6c99bb;
+  font-size: 27px;
+  font-weight: 600;
+  text-align: center;
+  color: #dd0c63;
+}
+.form{
+  height: 167px;
+  display: flex;
+  cursor: pointer;
+  margin: 30px 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 2px dashed #6c99bb;
+}
+form :where(i, p){
+  color: #6990F2;
+}
+form i{
+  font-size: 50px;
+}
+form p{
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+section .row{
+  margin-bottom: 10px;
+  background: #E9F0FF;
+  list-style: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+section .row i{
+  color: #6990F2;
+  font-size: 30px;
+}
+section .details span{
+  font-size: 14px;
+}
+.progress-area .row .content{
+  width: 100%;
+  margin-left: 15px;
+}
+.progress-area .details{
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+  justify-content: space-between;
+}
+.progress-area .content .progress-bar{
+  height: 6px;
+  width: 100%;
+  margin-bottom: 4px;
+  background: #fff;
+  border-radius: 30px;
+}
+.content .progress-bar .progress{
+  height: 100%;
+  width: 0%;
+  background: #6990F2;
+  border-radius: inherit;
+}
+.uploaded-area{
+  max-height: 232px;
+  overflow-y: scroll;
+}
+.uploaded-area.onprogress{
+  max-height: 150px;
+}
+.uploaded-area::-webkit-scrollbar{
+  width: 0px;
+}
+.uploaded-area .row .content{
+  display: flex;
+  align-items: center;
+}
+.uploaded-area .row .details{
+  display: flex;
+  margin-left: 15px;
+  flex-direction: column;
+}
+.uploaded-area .row .details .size{
+  color: #404040;
+  font-size: 11px;
+}
+.uploaded-area i.fa-check{
+  font-size: 16px;
+}
+
+/*
+------------------ */
+#formHeader h3 {
+  margin: 0;
+  padding: 0.4em;
+  text-align: center;
+  font-size: 2.4em;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+#formBody {
+  font-weight: 300;
+  font-size: 1.15em;
+}
+
+.rf_notice {
+  font-size:.8em;
+  text-align: center;
+  color: #999393;
+}
+
+.FlowupLabels .fl_label {
+  cursor: text;
+}
+
+.rf_submit {
+  background:none;
+  border-radius: 4px;
+  border: 1px dotted #3dd585;
+  color: #3dd585;
+  font-size: 18px;
+  padding: 5px 25px;
+  display: block;
+  margin: auto;
+}
+.rf_submit:hover {
+  cursor:pointer;
+  background:#3dd585;
+  color: #555;
+}
+.rf_submit:focus {
+  outline:none;
+  border: 1px solid #3dd585;
+}
+
+#miscInfo {
+  position:fixed;
+  bottom:10px;
+  left:15px;
+  font-size: 12px;
+  color: #999;
+}
+#miscInfo a {
+  color:#999;
+}
+#ghBanner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+/*
+ * FlowupLabels Basic Stylesheet
+ * -----------------------------
+ * This style sheet is marked with comments indicating
+ * what should and what shouldn't be changed for your
+ * styling purposes.
+ */
+
+.FlowupLabels .fl_wrap {
+  /* Can change */
+  width: 500px;
+  height: 46px;
+  margin:12px auto;
+
+  /* Don't change */
+  display:block;
+  position:relative;
+  -webkit-box-sizing:border-box;
+     -moz-box-sizing:border-box;
+          box-sizing:border-box;
+}
+
+/* initial label state */
+.FlowupLabels .fl_label {
+  /* Can change */
+  top: 15px;
+  left: 5px;
+  color: #6990F2;
+  color: #aba8a4;
+  /* Don't change */
+  position:absolute;
+  z-index:3; /* This can be removed but then the labels must be placed after the inputs in the HTML */
+  -webkit-transition: all .08s ease;
+	   -moz-transition: all .08s ease;
+	   	   -transition: all .08s ease;
+  -webkit-transform: translate3d(0,0,0);
+     -moz-transform: translate3d(0,0,0);
+      -ms-transform: translate3d(0,0,0);
+       -o-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
+}
+
+.FlowupLabels .fl_input {
+  /* Can change */
+  background: none;
+  border:none;
+  border-bottom: 1px solid #6990F2;
+  border-radius: 0;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 20px 0 0 5px;
+  caret-color: #fbfbfb;
+
+  /* Don't change */
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  width: 95%;
+  z-index:2; /* This can be removed but then the labels must be placed after the inputs in the HTML */
+  -webkit-box-sizing:border-box;
+     -moz-box-sizing:border-box;
+          box-sizing:border-box;
+}
+.FlowupLabels .fl_input::after {
+  border: none;
+}
+
+
+/* Focus & populated label styling */
+.FlowupLabels .fl_wrap.focused .fl_label,
+.FlowupLabels .fl_wrap.populated .fl_label {
+  /* Can change */
+  -webkit-transform: translate(0,-12px);
+     -moz-transform: translate(0,-12px);
+      -ms-transform: translate(0,-12px);
+       -o-transform: translate(0,-12px);
+          transform: translate(0,-12px);
+  font-size: 12px;
+  color: #555;
+}
+.FlowupLabels .fl_wrap.focused .fl_label {
+  /* Can change */
+  color: orange;
+}
+
+.submit-upload {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 55;
+  border-radius: 3px;
+  padding: 12px 24px;
+  border: 0;
+  color: white !important;
+  background: rgb(105, 144, 242);
+  line-height: 1.15;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: Poppins;
+  margin-left: 225px;
+  margin-top: 30px;
+}
+
+.submit-upload:hover {
+
+  background: orange;
+
+}

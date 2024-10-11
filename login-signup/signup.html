@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup-style.css" />
+    <link rel="icon" type="text/css" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png">
+    <title>IVS | Signup</title>
+  </head>
+  <body style="font-family: Montserrat; user-select: none;">
+    <main>
+        <section class="form-section">
+          <div class="form-wrapper">
+            <h1 class="title">Sign up</h1>
+            <div class="form" action="" id="signup-form" method="">
+              <div class="form-group">
+                <label>
+                  <span class="sr-only">Email address</span>
+                  <input type="email" placeholder="Email" class="form-input" required="required" id="user-email">
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <span class="sr-only">Password</span>
+                  <input type="password" placeholder="Password" class="form-input" required="required" id="user-pass">
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <span class="sr-only">Password</span>
+                  <input type="password" placeholder="Confirm Password" class="form-input" required="required" id="check-user-pass">
+                </label>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Sign Up" class="form-submit" id="signup">
+              </div>
+
+              <footer class="form-footer">
+                  <div>
+                    Already have an account?
+                    <a href="login.html" class="form-link">Log in</a>
+                  </div>
+              </footer>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Popup Container -->
+      <div id="popup-container" class="popup">
+        <img src="../assets/welcome.png" alt="Congrats Image">
+        <p>Congrats!! You are in</p>
+      </div>
+
+      <script type="module">
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+          import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+          import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+          const firebaseConfig = {
+            apiKey: "AIzaSyC3cqpweL5x7D8XNhtXXgK6meZ9fq23QOk",
+            authDomain: "userdetails-5814f.firebaseapp.com",
+            databaseURL: "https://userdetails-5814f-default-rtdb.firebaseio.com",
+            projectId: "userdetails-5814f",
+            storageBucket: "userdetails-5814f.appspot.com",
+            messagingSenderId: "909595503569",
+            appId: "1:909595503569:web:f777249a1f353fb9bc8ef0",
+            measurementId: "G-HE14EDLZTR"
+          };
+
+          const app = initializeApp(firebaseConfig);
+          const database = getDatabase(app);
+          const auth = getAuth();
+
+          function resetForm() {
+            document.getElementById('user-email').value = '';
+            document.getElementById('user-pass').value = '';
+            document.getElementById('check-user-pass').value = '';
+          }
+
+          signup.addEventListener('click', (e) => {
+            var email = document.getElementById('user-email').value;
+            var password = document.getElementById('user-pass').value;
+            var checkPass = document.getElementById("check-user-pass").value;
+
+            if (password !== checkPass) {
+              event.preventDefault();
+              alert("Passwords do not match.");
+            } else {
+              createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                  // Signed up
+                  const user = userCredential.user;
+                  console.log("user added");
+                  document.getElementById("popup-container").classList.add("show");
+
+                  setTimeout(() => {
+                    document.getElementById("popup-container").classList.remove("show");
+                    resetForm();
+                  }, 3000);
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.log(errorMessage);
+                });
+            }
+          });
+
+      </script>
+  </body>
+</html>
