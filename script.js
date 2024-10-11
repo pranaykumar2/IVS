@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 document.addEventListener("DOMContentLoaded", function () {
   openModal();
 });
@@ -90,4 +90,3 @@ toggleBtn.onclick = function() {
 
   toggleBtnIcon.classList = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'
 };
->>>>>>> 34e14bcecdbba6453a0526c7abc8b4d6f864f134
