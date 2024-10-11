@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+<<<<<<< HEAD
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link  rel="icon" type="image/png" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png" />
@@ -76,5 +77,710 @@
     </div>
 
     <script type="module" src="script.js"></script>
+=======
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/png" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png">
+      <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+      <title>IVS | User Verification</title>
+  </head>
+  <body>
+      <div class="header">
+          <div class="container">
+              <div class="logo">
+                  <a href="#">Identity Verification System</a>
+              </div>
+              <div class="nav">
+                  <a href="#">Upload</a>
+                  <a href="#">Check Status</a>
+                  <button type="button" class="button1">Login</button>
+                  <button type="button" class="button2">Logout</button>
+              </div>
+          </div>
+      </div>
+      <div class="glass-panel account-details" style="display: none;">
+          <span><h4 style="color: black">Account address:</h4> <span id="account-address"></span></span>
+          <span><h4 style="color: black">Network:</h4> <span id="network"></span></span>
+          <span><h4 style="color: black">Connected on:</h4> <span id="connection-time"></span></span>
+          <span><h4 style="color: black">Balance:</h4> <span id="userBalance"></span></span>
+      </div>
+
+
+      <!-- File Upload -->
+
+      <!-- Upload Area -->
+      <div id="uploadArea" class="upload-area" >
+        <!-- Header -->
+        <div class="upload-area__header">
+          <h1 class="upload-area__title">Upload your file</h1>
+          <p class="upload-area__paragraph">
+            File should be an image
+            <strong class="upload-area__tooltip">
+              Like
+              <span class="upload-area__tooltip-data"></span> <!-- Data Will be Comes From Js -->
+            </strong>
+          </p>
+        </div>
+        <!-- End Header -->
+
+        <!-- Drop Zoon -->
+        <div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
+          <span class="drop-zoon__icon">
+            <i class='bx bxs-file-image'></i>
+          </span>
+          <p class="drop-zoon__paragraph">Drop your file here or Click to browse</p>
+          <span id="loadingText" class="drop-zoon__loading-text">Please Wait</span>
+          <img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image" draggable="false">
+          <input type="file" id="fileInput" class="drop-zoon__file-input" accept=".jpg, .pdf, .doc, .docx">
+        </div>
+        <!-- End Drop Zoon -->
+
+        <!-- File Details -->
+        <div id="fileDetails" class="upload-area__file-details file-details">
+          <h3 class="file-details__title">Uploaded File</h3>
+
+          <div id="uploadedFile" class="uploaded-file">
+            <div class="uploaded-file__icon-container">
+              <i class='bx bxs-file-blank uploaded-file__icon'></i>
+              <span class="uploaded-file__icon-text"></span> <!-- Data Will be Comes From Js -->
+            </div>
+
+            <div id="uploadedFileInfo" class="uploaded-file__info">
+              <span class="uploaded-file__name">Proejct 1</span>
+              <span class="uploaded-file__counter">0%</span>
+            </div>
+          </div>
+        </div>
+        <!-- End File Details -->
+      </div>
+      <!-- End Upload Area -->
+
+      <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+          const connectButton = document.querySelector('.button1');
+          const accountDetails = document.querySelector('.account-details');
+
+          connectButton.addEventListener('click', async function () {
+              if (typeof window.ethereum === 'undefined') {
+                  console.log("MetaMask is not installed. Please install it from metamask.io");
+                  return;
+              }
+
+              try {
+
+                  const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                  console.log("MetaMask connected successfully!");
+                  console.log("Selected account:", accounts[0]);
+
+                  connectButton.textContent = "Connected!!";
+                  connectButton.disabled = true;
+                  displayAccountDetails(accounts[0]);
+              } catch (error) {
+                  console.log("Error connecting to MetaMask:", error);
+              }
+          });
+
+          async function displayAccountDetails(account) {
+              let network;
+              switch (window.ethereum.net_version) {
+                  case '1':
+                      network = 'Ethereum';
+                      break;
+                  case '2':
+                      network = 'Morden';
+                      break;
+                  case '3':
+                      network = 'Ropsten';
+                      break;
+                  case '4':
+                      network = 'Rinkeby';
+                      break;
+                  case '11155111':
+                      network = 'Sepolia';
+                      break;
+                  
+                  case '42':
+                      network = 'Kovan';
+                      break;
+                  default:
+                      network = 'Unknown';
+              }
+
+              const connectionTime = new Date().toLocaleString();
+
+              const accountAddressElement = document.getElementById('account-address');
+              const networkElement = document.getElementById('network');
+              const connectionTimeElement = document.getElementById('connection-time');
+              const accountBalance = document.getElementById('userBalance');
+
+              accountAddressElement.textContent = account;
+              networkElement.textContent = network;
+              connectionTimeElement.textContent = connectionTime;
+
+              accountDetails.style.display = 'block';
+          }
+      });
+
+      const uploadArea = document.querySelector('#uploadArea')
+
+      const dropZoon = document.querySelector('#dropZoon');
+
+      const loadingText = document.querySelector('#loadingText');
+
+      const fileInput = document.querySelector('#fileInput');
+
+      const previewImage = document.querySelector('#previewImage');
+
+      const fileDetails = document.querySelector('#fileDetails');
+
+      const uploadedFile = document.querySelector('#uploadedFile');
+
+      const uploadedFileInfo = document.querySelector('#uploadedFileInfo');
+
+      const uploadedFileName = document.querySelector('.uploaded-file__name');
+
+      const uploadedFileIconText = document.querySelector('.uploaded-file__icon-text');
+
+      const uploadedFileCounter = document.querySelector('.uploaded-file__counter');
+
+      const toolTipData = document.querySelector('.upload-area__tooltip-data');
+
+      // Images Types
+      const imagesTypes = [
+        // "jpeg",
+        // "png",
+        // "svg",
+        // "gif"
+      ];
+
+      toolTipData.innerHTML = [...imagesTypes].join(', .');
+
+      dropZoon.addEventListener('dragover', function (event) {
+        event.preventDefault();
+
+        dropZoon.classList.add('drop-zoon--over');
+      });
+
+      dropZoon.addEventListener('dragleave', function (event) {
+        dropZoon.classList.remove('drop-zoon--over');
+      });
+
+      dropZoon.addEventListener('drop', function (event) {
+        event.preventDefault();
+
+        dropZoon.classList.remove('drop-zoon--over');
+
+        const file = event.dataTransfer.files[0];
+
+        uploadFile(file);
+      });
+
+      dropZoon.addEventListener('click', function (event) {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+
+        uploadFile(file);
+      });
+
+      function uploadFile(file) {
+        const fileReader = new FileReader();
+        const fileType = file.type;
+        const fileSize = file.size;
+
+        if (fileValidate(fileType, fileSize)) {
+          dropZoon.classList.add('drop-zoon--Uploaded');
+
+          loadingText.style.display = "block";
+          previewImage.style.display = 'none';
+
+          uploadedFile.classList.remove('uploaded-file--open');
+          uploadedFileInfo.classList.remove('uploaded-file__info--active');
+
+          fileReader.addEventListener('load', function () {
+            setTimeout(function () {
+              uploadArea.classList.add('upload-area--open');
+
+              loadingText.style.display = "none";
+              previewImage.style.display = 'block';
+
+              fileDetails.classList.add('file-details--open');
+              uploadedFile.classList.add('uploaded-file--open');
++              uploadedFileInfo.classList.add('uploaded-file__info--active');
+            }, 500); // 0.5s
+
+            previewImage.setAttribute('src', fileReader.result);
+
+            uploadedFileName.innerHTML = file.name;
+
+            progressMove();
+          });
+
+          fileReader.readAsDataURL(file);
+        } else { // Else
+
+          this;
+
+        };
+      };
+
+      function progressMove() {
+        let counter = 0;
+
+        setTimeout(() => {
+          let counterIncrease = setInterval(() => {
+            if (counter === 100) {
+              clearInterval(counterIncrease);
+            } else { // Else
+              counter = counter + 10;
+              uploadedFileCounter.innerHTML = `${counter}%`
+            }
+          }, 100);
+        }, 600);
+      };
+
+
+      function fileValidate(fileType, fileSize) {
+        let isImage = imagesTypes.filter((type) => fileType.indexOf(`image/${type}`) !== -1);
+
+        if (isImage[0] === 'jpeg') {
+          uploadedFileIconText.innerHTML = 'jpg';
+        } else { // else
+          uploadedFileIconText.innerHTML = isImage[0];
+        };
+
+        if (isImage.length !== 0) {
+          if (fileSize <= 2000000) { // 2MB :)
+            return true;
+          } else { // Else File Size
+            return alert('Please Your File Should be 2 Megabytes or Less');
+          };
+        } else { // Else File Type
+          return alert('Please make sure to upload An Image File Type');
+        };
+      };
+
+      //
+      </script>
+
+      <style media="screen">
+      @font-face {
+          font-family: 'Poppins';
+          src: url('../fonts/Poppins/Poppins-ExtraLight.otf');
+      }
+
+      @font-face {
+          font-family: 'Montserrat';
+          src: url('../fonts/Montserrat.ttf');
+      }
+
+      @font-face {
+          font-family: 'Bricolage';
+          src: url('../fonts/Bricolage/BricolageGrotesque.ttf');
+      }
+
+      @font-face {
+          font-family: 'UbuntuNormal';
+          src: url('../fonts/Ubuntu-Regular.ttf');
+      }
+
+      body {
+          background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+          font-family: 'Montserrat', sans-serif;
+      }
+
+
+
+      .header {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+      }
+
+      .container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 80%;
+          height: 70px;
+      }
+
+      .logo a {
+          text-decoration: none;
+          color: black;
+          font-weight: bold;
+          font-size: 20px;
+          margin-left : -37px;
+          cursor: pointer;
+          font-family: 'Poppins';
+      }
+
+      .nav a {
+          text-decoration: none;
+          color: black;
+          font-weight: 550;
+          cursor: pointer;
+          font-family: 'Poppins';
+      }
+
+      .nav a:not(:last-child) {
+          margin-right: 20px;
+      }
+
+      .button1,
+      .button2 {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 5px;
+          height: 40px;
+          font-family: 'Poppins', sans-serif;
+          cursor: pointer;
+          margin-right: 25px;
+      }
+
+      .button2 {
+          background-color: red;
+      }
+
+      .button1:hover {
+          background-color: orange;
+          color: black;
+      }
+
+      .glass-panel {
+          color: #fff;
+          margin: 40px auto;
+          background-color: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          width: 80%;
+          max-width: 600px;
+          border-radius: 15px;
+          padding: 32px;
+          box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(0px);
+      }
+
+      .account-details span {
+          display: block;
+          margin-bottom: 10px;
+      }
+
+      .account-details span:first-child {
+          margin-top: 10px;
+      }
+
+      :root {
+        --clr-white: rgb(255, 255, 255);
+        --clr-black: rgb(0, 0, 0);
+        --clr-light: rgb(245, 248, 255);
+        --clr-light-gray: rgb(196, 195, 196);
+        --clr-blue: rgb(63, 134, 255);
+        --clr-light-blue: rgb(171, 202, 255);
+      }
+
+      /* End General Styles */
+
+      /* Upload Area */
+      .upload-area {
+        width: 100%;
+        max-width: 25rem;
+        background-color: var(--clr-white);
+        border-radius: 24px;
+        padding: 2rem 1.875rem 5rem 1.875rem;
+        margin: 0.625rem;
+        text-align: center;
+        margin-top: 100px;
+        margin-left: 600px;
+      }
+
+      .upload-area--open { /* Slid Down Animation */
+        animation: slidDown 500ms ease-in-out;
+      }
+
+      @keyframes slidDown {
+        from {
+          height: 28.125rem; /* 450px */
+        }
+
+        to {
+          height: 35rem; /* 560px */
+        }
+      }
+
+      /* Header */
+      .upload-area__header {
+
+      }
+
+      .upload-area__title {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 0.3125rem;
+      }
+
+      .upload-area__paragraph {
+        font-size: 0.9375rem;
+        color: var(--clr-light-gray);
+        margin-top: 0;
+      }
+
+      .upload-area__tooltip {
+        position: relative;
+        color: var(--clr-light-blue);
+        cursor: pointer;
+        transition: color 300ms ease-in-out;
+      }
+
+      .upload-area__tooltip:hover {
+        color: var(--clr-blue);
+      }
+
+      .upload-area__tooltip-data {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -125%);
+        min-width: max-content;
+        background-color: var(--clr-white);
+        color: var(--clr-blue);
+        border: 1px solid var(--clr-light-blue);
+        padding: 0.625rem 1.25rem;
+        font-weight: 500;
+        opacity: 0;
+        visibility: hidden;
+        transition: none 300ms ease-in-out;
+        transition-property: opacity, visibility;
+      }
+
+      .upload-area__tooltip:hover .upload-area__tooltip-data {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Drop Zoon */
+      .upload-area__drop-zoon {
+        position: relative;
+        height: 11.25rem; /* 180px */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 2px dashed var(--clr-light-blue);
+        border-radius: 15px;
+        margin-top: 2.1875rem;
+        cursor: pointer;
+        transition: border-color 300ms ease-in-out;
+      }
+
+      .upload-area__drop-zoon:hover {
+        border-color: var(--clr-blue);
+      }
+
+      .drop-zoon__icon {
+        display: flex;
+        font-size: 3.75rem;
+        color: var(--clr-blue);
+        transition: opacity 300ms ease-in-out;
+      }
+
+      .drop-zoon__paragraph {
+        font-size: 0.9375rem;
+        color: var(--clr-light-gray);
+        margin: 0;
+        margin-top: 0.625rem;
+        transition: opacity 300ms ease-in-out;
+      }
+
+      .drop-zoon:hover .drop-zoon__icon,
+      .drop-zoon:hover .drop-zoon__paragraph {
+        opacity: 0.7;
+      }
+
+      .drop-zoon__loading-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        color: var(--clr-light-blue);
+        z-index: 10;
+      }
+
+      .drop-zoon__preview-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 0.3125rem;
+        border-radius: 10px;
+        display: none;
+        z-index: 1000;
+        transition: opacity 300ms ease-in-out;
+      }
+
+      .drop-zoon:hover .drop-zoon__preview-image {
+        opacity: 0.8;
+      }
+
+      .drop-zoon__file-input {
+        display: none;
+      }
+
+      /* (drop-zoon--over) Modifier Class */
+      .drop-zoon--over {
+        border-color: var(--clr-blue);
+      }
+
+      .drop-zoon--over .drop-zoon__icon,
+      .drop-zoon--over .drop-zoon__paragraph {
+        opacity: 0.7;
+      }
+
+      /* (drop-zoon--over) Modifier Class */
+      .drop-zoon--Uploaded {
+
+      }
+
+      .drop-zoon--Uploaded .drop-zoon__icon,
+      .drop-zoon--Uploaded .drop-zoon__paragraph {
+        display: none;
+      }
+
+      /* File Details Area */
+      .upload-area__file-details {
+        height: 0;
+        visibility: hidden;
+        opacity: 0;
+        text-align: left;
+        transition: none 500ms ease-in-out;
+        transition-property: opacity, visibility;
+        transition-delay: 500ms;
+      }
+
+      /* (duploaded-file--open) Modifier Class */
+      .file-details--open {
+        height: auto;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .file-details__title {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: var(--clr-light-gray);
+      }
+
+      /* Uploaded File */
+      .uploaded-file {
+        display: flex;
+        align-items: center;
+        padding: 0.625rem 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: none 500ms ease-in-out;
+        transition-property: visibility, opacity;
+      }
+
+      /* (duploaded-file--open) Modifier Class */
+      .uploaded-file--open {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .uploaded-file__icon-container {
+        position: relative;
+        margin-right: 0.3125rem;
+      }
+
+      .uploaded-file__icon {
+        font-size: 3.4375rem;
+        color: var(--clr-blue);
+      }
+
+      .uploaded-file__icon-text {
+        position: absolute;
+        top: 1.5625rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--clr-white);
+      }
+
+      .uploaded-file__info {
+        position: relative;
+        top: -0.3125rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .uploaded-file__info::before,
+      .uploaded-file__info::after {
+        content: '';
+        position: absolute;
+        bottom: -0.9375rem;
+        width: 0;
+        height: 0.5rem;
+        background-color: #ebf2ff;
+        border-radius: 0.625rem;
+      }
+
+      .uploaded-file__info::before {
+        width: 100%;
+      }
+
+      .uploaded-file__info::after {
+        width: 100%;
+        background-color: var(--clr-blue);
+      }
+
+      /* Progress Animation */
+      .uploaded-file__info--active::after {
+        animation: progressMove 800ms ease-in-out;
+        animation-delay: 300ms;
+      }
+
+      @keyframes progressMove {
+        from {
+          width: 0%;
+          background-color: transparent;
+        }
+
+        to {
+          width: 100%;
+          background-color: var(--clr-blue);
+        }
+      }
+
+      .uploaded-file__name {
+        width: 100%;
+        max-width: 6.25rem; /* 100px */
+        display: inline-block;
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .uploaded-file__counter {
+        font-size: 1rem;
+        color: var(--clr-light-gray);
+      }
+
+      </style>
+>>>>>>> 34e14bcecdbba6453a0526c7abc8b4d6f864f134
   </body>
 </html>
