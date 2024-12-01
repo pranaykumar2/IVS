@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVS | Login</title>
+    <link rel="stylesheet" href="login-style.css" />
+    <link rel="icon" type="text/css" href="https://i.ibb.co/tYcdLH4/lib-circle-logo-yellowonblack.png">
+  </head>
+  <body style="font-family: Montserrat; user-select: none;">
+    <main>
+      <section class="form-section">
+        <div class="form-wrapper">
+          <h1 class="title">Login</h1>
+          <div class="form" action="" id="login-form">
+            <div class="form-group">
+              <label>
+                <span class="sr-only">Email address</span>
+                <input type="email" placeholder="Email" class="form-input" required id="email">
+              </label>
+            </div>
+            <div class="form-group">
+              <label>
+                <span class="sr-only">Password</span>
+                <input type="password" placeholder="Password" class="form-input" required="required" id="pass">
+              </label>
+            </div>
+
+            <div class="form-group">
+              <input type="submit" value="Submit" class="form-submit" id="login">
+            </div>
+
+            <footer class="form-footer">
+                <div>
+                  <a href="#" class="form-link" id="reset-pass">Forgot password?</a>
+                </div>
+                <div>
+                  New here?
+                  <a href="signup.html" class="form-link">Create Account</a>
+                </div>
+            </footer>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Popup Container -->
+    <div id="popup-container" class="popup">
+      <img src="../assets/hello.png" alt="Welcome back Image">
+      <p>Happy to see you again!!</p>
+    </div>
+
+    <div id="user-not-found" class="popup">
+      <img src="../assets/notfound.png" alt="Invalid User">
+      <p>Invalid Login!!</p>
+    </div>
+
+    <div id="email-sent" class="popup">
+      <img src="../assets/sent.png" alt="Congrats Image">
+      <p>Email Sent!!</p>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+      import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyC3cqpweL5x7D8XNhtXXgK6meZ9fq23QOk",
+        authDomain: "userdetails-5814f.firebaseapp.com",
+        databaseURL: "https://userdetails-5814f-default-rtdb.firebaseio.com",
+        projectId: "userdetails-5814f",
+        storageBucket: "userdetails-5814f.appspot.com",
+        messagingSenderId: "909595503569",
+        appId: "1:909595503569:web:f777249a1f353fb9bc8ef0",
+        measurementId: "G-HE14EDLZTR"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const auth = getAuth();
+
+      function resetForm() {
+        document.getElementById('email').value = '';
+        document.getElementById('pass').value = '';
+      }
+
+      login.addEventListener('click', (e) => {
+        e.preventDefault();
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('pass').value;
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log("User Found");
+            document.getElementById("popup-container").classList.add("show");
+
+            setTimeout(() => {
+              document.getElementById("popup-container").classList.remove("show");
+              resetForm();
+            }, 3000);
+            window.location = "../users/index.html";
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+            document.getElementById("user-not-found").classList.add("show");
+
+            setTimeout(() => {
+              document.getElementById("user-not-found").classList.remove("show");
+              resetForm();
+            }, 3000);
+          });
+      });
+      const reset_pass = document.getElementById("reset-pass");
+      reset_pass.addEventListener("click", (event) => {
+        const email = document.getElementById("email").value;
+        event.preventDefault();
+        sendPasswordResetEmail(auth, email)
+          .then(() => {
+
+            document.getElementById("email-sent").classList.add("show");
+
+            setTimeout(() => {
+              document.getElementById("email-sent").classList.remove("show");
+              resetForm();
+            }, 3000);
+
+            console.log("Email sent..");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+          });
+      });
+    </script>
+  </body>
+</html>

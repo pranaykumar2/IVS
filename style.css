@@ -1,0 +1,492 @@
+@font-face
+{
+	font-family: 'Poppins';
+	src: url('fonts/Poppins/Poppins-ExtraLight.otf');
+}
+@font-face
+{
+	font-family: 'Poppins1';
+	src: url('fonts/Poppins/Poppins-Regular.otf');
+}
+
+@font-face
+{
+	font-family: 'Poppins2';
+	src: url('fonts/Poppins/Poppins-Medium.otf');
+}
+
+@font-face
+{
+	font-family: 'Bricolage';
+	src: url('fonts/Bricolage/BricolageGrotesque.ttf');
+}
+
+@font-face
+{
+	font-family: 'UbuntuNormal';
+	src: url('fonts/Ubuntu-Regular.ttf');
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    background-color: #000;
+    background-image: url('assets/workplace-office-with-laptop-coffee-dark-room-night.jpg');
+    background-size: 1520px 900px; /* Adjusted to cover the entire viewport */
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Poppins1';
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+}
+
+/* Additional styles for better responsiveness */
+@media screen and (max-width: 1520px) {
+    body {
+        background-size: 100% auto;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    body {
+        background-size: cover;
+    }
+}
+
+
+
+body::-webkit-scrollbar{
+	display: none;
+}
+
+li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 1rem;
+}
+
+a:hover{
+	color: orange;
+}
+
+h1 {
+	height: 715px;
+	color: #fff;
+	font-size: 40px;
+}
+
+/* Header */
+
+header{
+	position: relative;
+	padding: 0 2rem;
+}
+
+.navbar {
+	width: 100%;
+	height: 60px;
+	max-width: 1520px;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navbar .logo a{
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.navbar .links{
+	display: flex;
+	gap: 2rem;
+}
+
+.navbar .toggle_btn{
+	color: #fff;
+	font-size: 1.5rem;
+	cursor: pointer;
+	display: none;
+}
+
+.action_btn{
+	background-color: orange;
+	color: #fff;
+	padding: 0.5rem 1rem;
+	outline: none;
+	border-radius: 20px;
+	font-size: 0.8rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: scale 0.2 ease;
+}
+
+.action_btn:hover{
+	scale: 1.05;
+	color: white;
+}
+
+.action_btn:active {
+	scale: 0.95;
+}
+
+/* POPUP BUTTON */
+
+.button-res {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 50;
+    border-radius: 3px;
+    padding: 12px 24px;
+    border: 0;
+    color: white !important;
+    background: #2e4cb8;
+    line-height: 1.15;
+    font-size: 16px;
+		font-family: UbuntuNormal;
+		margin-right: 20px;
+		margin-top: 30px;
+}
+
+.button-res:hover {
+			transition: all .1s ease;
+			box-shadow: 0 0 0 0 #fff, 0 0 0 3px #F5F5F5;
+			background: orange !important;
+	}
+
+
+/* DROPDOWN-MENU */
+
+.dropdown-menu{
+	position: absolute;
+	right: 2rem;
+	top: 60px;
+	height: 0;
+	width: 300px;
+	background: rgba(255, 255, 255, 0.1);
+	background-filter: blur(15px);
+	border-radius: 10px;
+	overflow: hidden;
+	transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32. 1.275);
+}
+
+.dropdown-menu.open{
+	height:240px;
+}
+
+.dropdown-menu li{
+	padding: 0.7rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dropdown-menu .action_btn{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/* About Us Section Styles */
+
+#about {
+	font-family: Bricolage;
+	font-size: 22px;
+	background-color: white !important;
+    color: darkblue;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.about-student {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+	margin-bottom: 20px;
+}
+
+.photo img {
+    width: 250px;
+    height: 250px;
+    margin-right: 50px;
+    margin-left: 100px;
+    border-radius: 10px;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25),
+				0px 10px 20px 0px rgba(0, 0, 0, 0.5);
+}
+
+.details {
+    margin-right: 150px;
+	font-size: 16px;
+	font-family: Poppins1;
+	color:black;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .photo img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .details {
+        margin-right: 0;
+    }
+}
+
+/* Contact Us Section Styles */
+.contact-us {
+	background-color: #1D2D50;
+	padding: 50px 0;
+	text-align: center;
+	margin-bottom: 0;
+
+  }
+
+  .contact-us h1 {
+	font-family: 'Bricolage';
+	font-size: 22px;
+	color: #2e4cb8;
+  }
+
+  /* Contact Container Styles */
+  .contact-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	max-width: 1200px;
+	margin: auto;
+  }
+
+  /* Left Half - Form Styles */
+.contact-left {
+	flex: 1;
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px 5px rgba(1, 0, 1, 0.2);
+	text-align: left;
+	max-width: 100%; /* Allow the form to spread to the screen */
+	margin-right: 20px; /* Add a margin between left and right halves */
+  }
+
+  .label-group, .input-group {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start; /* Adjusted to align items at the top */
+	margin-bottom: 20px;
+	max-width: 100%;
+  }
+
+
+  .label-group label {
+	font-family: 'Poppins1';
+	font-size: 16px;
+	color: #2e4cb8; /* Violet color */
+	flex-basis: calc(50% - 10px); /* Adjusted to prevent overlap */
+  }
+
+  .input-group input,
+  .input-group textarea {
+	flex: 1;
+	padding: 10px;
+	border: none;
+	border-bottom: 1px solid #ccc; /* Underline */
+	background-color: transparent; /* Transparent background */
+	color: #2e4cb8; /* Violet color */
+	font-family: 'Poppins1';
+	transition: border-color 0.3s ease;
+  }
+
+  .input-group textarea {
+	border-bottom: none; /* Remove the underline for the textarea */
+	border: 1px solid #ccc; /* Add a border to the textarea */
+	padding: 10px;
+  }
+
+  .input-group input:focus,
+  .input-group textarea:focus {
+	outline: none;
+	border-color: #2e4cb8; /* Violet color on focus */
+  }
+
+  textarea {
+	resize: none;
+  }
+
+  .button-1 {
+	width: 35%;
+	margin-top: 20px;
+	background-color: #2e4cb8;
+	color: white;
+	padding: 12px 24px;
+	border: 0;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 16px;
+	font-family: 'UbuntuNormal';
+	transition: background-color 0.3s ease;
+  }
+
+  .button-1:hover {
+	background-color: orange;
+  }
+
+  /* Right Half - Organization Details Styles */
+  .contact-right {
+	flex: 1;
+	background-color: #2e4cb8; /* Violet color */
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px 5px rgba(1, 0, 1, 0.2);
+  }
+
+  .details {
+	text-align: left; /* Align all details to the left */
+  }
+
+  .details p {
+	margin-bottom: 15px;
+	font-family: 'Poppins1';
+	font-size: 16px;
+	color: white; /* Font color is set to white */
+  }
+
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 992px){
+	.navbar .links,
+	.navbar .action_btn{
+		display: none;
+	}
+
+	.navbar .toggle_btn{
+		display: block;
+	}
+
+	.dropdown-menu{
+		display: block;
+	}
+}
+
+@media (max-width: 576px){
+	.dropdown-menu{
+		left: 2rem;
+		width: unset;
+	}
+}
+
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal::-webkit-scrollbar{
+	display: none;
+}
+
+.modal-columns {
+  display: flex;
+}
+
+.modal-column {
+  flex: 1;
+  padding: 20px;
+}
+
+img{
+	pointer-events: none;
+}
+
+.modal-picture img {
+  max-width: 100%;
+  height: auto;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Animation to make the modal slowly appear */
+.modal.show {
+  opacity: 1;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+/* Responsive for modal */
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 100%;
+    max-width: 80%;
+    margin: 10% auto;
+  }
+
+  .modal-columns {
+    flex-direction: column;
+  }
+
+  .modal-column {
+    padding: 15px;
+  }
+
+  .button-res {
+    margin-top: 15px;
+  }
+}
